@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+
+    function App() {
+      let [min, setMin] = React.useState(0);
+      const onChange = (event) => {
+        setMin(event.target.value);
+        console.log(event.target.value);
+      };
+
+      return (
+        <div>
+          <h1 className="title">Super Converter</h1>
+
+          <label htmlFor="minutes">Minutes</label>
+          <input
+            onChange={onChange}
+            value={min}
+            id="minutes"
+            placeholder="Minutes"
+            type="number"
+          />
+
+          <label htmlFor="hours">Hours</label>
+          <input
+            value={min / 60}
+            id="hours"
+            placeholder="Hours"
+            type="number"
+          />
+        </div>
+      );
+    }
+
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
